@@ -1,6 +1,9 @@
+end = null
+
+
+
 import { readFile } from 'fs'
 
-end = null
 sayHello = (content) ->
   if not content?
     console.log "..."
