@@ -31,6 +31,20 @@ describe('@indentier/plugin-coffee', () => {
     expect(lines.at(-1)!.trim()).toBe('end');
   });
 
+  it('pins the declaration to line 1 above imports, with blank lines after', () => {
+    const input = 'import { puts } from "x"\ngreet = (name) ->\n  use name\n';
+    const out = format(
+      input,
+      resolveOptions({ mode: 'ruby', minColumn: 60, offset: 4 }),
+      '.coffee',
+      plugin,
+    );
+    const lines = out.split('\n');
+    expect(lines[0]).toBe('end = null');
+    expect(lines.slice(1, 4)).toEqual(['', '', '']);
+    expect(lines[4]!.trim()).toBe('import { puts } from "x"');
+  });
+
   it('idempotent: formatting twice gives the same result (ruby mode)', () => {
     const input = 'f = (x) ->\n  if x?\n    use x\n  else\n    skip()\ng = ->\n  done()\n';
     const opts = resolveOptions({ mode: 'ruby', minColumn: 60, offset: 4 });

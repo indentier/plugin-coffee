@@ -18,18 +18,12 @@ const plugin: IndentierPlugin = {
   rubyCompatible: true,
   indentationBased: true,
   declarationTemplate: 'end = null',
-  // Place the declaration after any leading `import`/`require` lines so it does
-  // not split an import section.
-  declarationInsertIndex: (lines) => {
-    for (let i = 0; i < lines.length; i++) {
-      const body = lines[i]!.body.trim();
-      if (body === '') continue;
-      if (/^import\b/.test(body)) continue;
-      if (/\brequire\b/.test(body)) continue;
-      return i;
-    }
-    return lines.length;
-  },
+  // Pin the declaration to the very top (line 1), above any imports. CoffeeScript
+  // hoists `import`s, so a leading `end = null` is valid, and a fixed position
+  // keeps the harmless declaration out of the code body.
+  declarationInsertIndex: () => 0,
+  // Separate the declaration from the rest of the file with blank lines.
+  declarationBlankLinesAfter: 3,
 };
 
 export default plugin;
