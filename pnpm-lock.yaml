@@ -18,8 +18,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@10.5.0)
       indentier:
-        specifier: file:..\indentier
-        version: file:../indentier(typescript@6.0.3)
+        specifier: ^0.5.0
+        version: 0.5.0(typescript@6.0.3)
       prettier:
         specifier: ^3.8.3
         version: 3.8.4
@@ -753,8 +753,8 @@ packages:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
 
-  indentier@file:../indentier:
-    resolution: {directory: ../indentier, type: directory}
+  indentier@0.5.0:
+    resolution: {integrity: sha512-Cf4FFk9uAgN2upyN7phMK/68JllNmuWbO/epeI1j7eoZymQkxMQrrhVcm9SpMI+7uAWUQ6FweLncutXssa7hTQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -1892,7 +1892,7 @@ snapshots:
 
   imurmurhash@0.1.4: {}
 
-  indentier@file:../indentier(typescript@6.0.3):
+  indentier@0.5.0(typescript@6.0.3):
     dependencies:
       commander: 14.0.3
       consola: 3.4.2
